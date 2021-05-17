@@ -63,9 +63,10 @@ Obs.: Essa lista pode aumentar ou diminuir conforme for adicionando ou apagando 
 ## Uso
 
 /
-​
+
+
 body(raw):
-​```json
+```json
 {
     "nome": "saleucami",
     "clima": "hot",
@@ -76,7 +77,7 @@ body(raw):
 
 - Quando deu certo.
 ```json
-​{
+{
     "status_code": 201,
     "data": {
         "_id": "609eb17e8f571d0ce475eb43",
@@ -90,7 +91,7 @@ body(raw):
 ```
 - Quando deu errado porque o planeta já está cadastrado.
 ```json
-​{
+{
     "status_code": 200,
     "message": "Não pode ser efetuado o cadastro do planeta de nome 'Saleucami' pois ele já está cadastrado no nosso banco de dados."
 }
@@ -114,7 +115,7 @@ body(raw):
 /planeta-com-nome
 ​
 body(raw):
-​```json
+```json
 {
     "nome": "Alderaan"
 }
@@ -185,7 +186,7 @@ Exemplo: /609d7769a516a93624990d2c
 ## Remover um planeta
 
 - Endpoint - `https://localhost:3333/:id`
-- Método - `GET`
+- Método - `DELETE`
 
 ## Uso
 
