@@ -1,7 +1,6 @@
 import Planet from "../Models/planetSchema.js";
-import planetsLib from "../Services/planetsLib.js";
+import searchApperiancesInMovies from "../Services/planetsLib.js";
 
-const searchApperiancesInMovies = planetsLib();
 
 const addPlanet = async (req, res) => {
   const name = req.body.nome.charAt(0).toUpperCase() + req.body.nome.slice(1);
@@ -13,15 +12,15 @@ const addPlanet = async (req, res) => {
       });
     } else {
       let apperiancesInMovies = 0;
-      searchApperiancesInMovies
+      searchApperiancesInMovies(name)
         .then((response) => {
-          for (const planetInLib of response) {
-            if (planetInLib.nome == name)
-              apperiancesInMovies = planetInLib.filmes;
-          }
-        })
+              apperiancesInMovies = response;
+          })
         .catch((err) => {
-          res.status(500).send(err);
+          res.status(400).send({
+            status_code: 400,
+            message:`O nome '${name}' não é nenhum planeta reconhecido no mundo do Star Wars.`,
+          })
         })
         .then(() => {
           let planet = new Planet({
