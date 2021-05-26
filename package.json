@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node -r dotenv/config server.js"
+    "start": "node -r dotenv/config server.js",
+    "api-test": "node app/services/planetsLib.js"
   },
   "type": "module",
   "author": "Tati Muniz",
