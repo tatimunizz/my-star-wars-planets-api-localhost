@@ -16,6 +16,14 @@ const planetsSchema = new mongoose.Schema({
   filmes: {
     type: Number,
   },
+  created_at: {
+    type: Date,
+    default: Date.now,
+  },
+  updated_at: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 export default mongoose.model("planets", planetsSchema);
