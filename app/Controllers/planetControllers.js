@@ -7,8 +7,8 @@ const addPlanet = async (req, res) => {
   const name = req.body.nome.charAt(0).toUpperCase() + req.body.nome.slice(1);
   Planet.find({ nome: name }, (err, Registredplanet) => {
     if (Registredplanet.length > 0) {
-      res.status(200).send({
-        status_code: 200,
+      res.status(409).send({
+        status_code: 409,
         message: `Não pode ser efetuado o cadastro do planeta de nome '${name}' pois ele já está cadastrado no nosso banco de dados.`,
       });
     } else {
@@ -74,7 +74,7 @@ const searchPlanetByName = async (req, res) => {
   Planet.find({ nome: name }, (err, planet) => {
     if (planet.length <= 0) {
       res.status(404).send({
-        status_code: 400,
+        status_code: 404,
         message: `O planeta com o nome ${name} não foi encontrado.`,
       });
     } else {
@@ -91,8 +91,8 @@ const deletePlanetByID = async (req, res) => {
         message: `Planeta com ID '${req.params.id}' não foi encontrado.`,
       });
     } else {
-      res.status(200).send({
-        status_code: 200,
+      res.status(204).send({
+        status_code: 204,
         message: `Planeta com ID '${req.params.id}' foi deletado com sucesso.`,
       });
     }
