@@ -1,29 +1,13 @@
-import axios from 'axios';
+import axios from "axios";
 
-const searchPlanets = async () => {
-  let result = [];
-  let response = [];
-  for (let i = 1; i <= 6; i++) {
-    const res = await axios
-      .get(`https://swapi.dev/api/planets/?page=${i}`)
-      .then((response) => {
-        response.data.results.forEach((element) => {
-          result.push({
-            nome: element.name,
-            clima: element.climate,
-            terreno: element.terrain,
-            filmes: element.films.length,
-          });
-        });
-        return result;
-      })
-      .catch((error) => {
-        return error;
-      });
-    let helper = [];
-    response = helper.concat(res);
-  }
-  return response;
+const searchPlanet = async (name) => {
+  const moviesApperiance = await axios
+    .get(`https://swapi.dev/api/planets/?search=${name}`)
+    .then((response) => {
+      return response.data.results[0].films.length;
+    });
+
+  return moviesApperiance;
 };
 
-export default searchPlanets;
+export default searchPlanet;
